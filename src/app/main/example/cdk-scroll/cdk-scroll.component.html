@@ -1,2 +1,20 @@
-<p>cdk-scroll works!</p>
 
+<mat-form-field [formGroup]="form">
+  <mat-select formControlName="select" (opened)="oFilter.focus()">
+    <mat-option disabled class="bb">
+      <input matInput #oFilter placeholder="filter" formControlName="optionFilter">
+    </mat-option>
+
+    <cdk-virtual-scroll-viewport [style.height.px]="8*25" itemSize="25" minBufferPx="{{ 8*25 }}"
+      maxBufferPx="{{ 16*25 }}">
+      <mat-option *cdkVirtualFor="let option of this.list" [value]="option">
+        {{ option }}
+      </mat-option>
+    </cdk-virtual-scroll-viewport>
+  </mat-select>
+</mat-form-field>
+
+
+<div>
+  value: {{ this.form.get('select')?.value }}
+</div>
