@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FeatureMaterialModule } from 'src/app/share/feature-material.module';
+import { ShareModule } from 'src/app/share/share.module';
 
 import { CdkScrollComponent } from './cdk-scroll.component';
 
@@ -8,7 +11,12 @@ describe('CdkScrollComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CdkScrollComponent ]
+      declarations: [ CdkScrollComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        ShareModule,
+        FeatureMaterialModule
+      ]
     })
     .compileComponents();
   });
